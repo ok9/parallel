@@ -1,5 +1,5 @@
 # parallel
-Parallel algorithm of Bayesian-based global search with Hooke–Jeeves local refinement for multi-objective optimization problems
+Parallel algorithm with OpenMPI of Bayesian-based global search with Hooke–Jeeves local refinement for multi-objective optimization problems
 
 
 Project should be compiled in build folder.
