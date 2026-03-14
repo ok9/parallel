@@ -881,11 +881,12 @@ void ParallelHybridAlgorithm::optimize_slave(){
 
 void ParallelHybridAlgorithm::optimize() {
 	
-     // Start measuring time
-    clock_t start = clock();
 
-	MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 	// Get the number of processes
+	
+	// Start measuring time
+    double start = MPI_Wtime();
     
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     // Get the rank of the process
@@ -906,10 +907,10 @@ void ParallelHybridAlgorithm::optimize() {
     	optimize_slave();
     }
 	
-	MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
 
-	clock_t end = clock();
-    run_time = double(end - start)/(CLOCKS_PER_SEC/1000);
+    double end = MPI_Wtime();
+    run_time = (end - start) * 1000.0;
 	
 	return;
 }
